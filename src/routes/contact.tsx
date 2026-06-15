@@ -55,8 +55,8 @@ function ContactPage() {
             <p className="mt-2 text-muted-foreground">Our doors and inboxes are always open.</p>
             <ul className="mt-8 space-y-5 text-sm">
               {[
-                { I: MapPin, t: "Address", d: "12, Bodhi Marg, Nagpur, Maharashtra 440010" },
-                { I: Phone, t: "Phone", d: "+91 98765 43210" },
+                { I: MapPin, t: "Address", d: "#4-6-01(Shop No-2) Shashi Mahal Talkies Road, Manglwar Pet. Near Reddy floar mill Raichur-584101" },
+                { I: Phone, t: "Phone", d: "+91 7019428321" },
                 { I: Mail, t: "Email", d: "connect@devanampriya.org" },
               ].map(({ I, t, d }) => (
                 <li key={t} className="flex gap-4">
