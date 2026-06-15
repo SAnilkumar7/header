@@ -1,0 +1,168 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-royal: var(--royal);
+  --color-royal-deep: var(--royal-deep);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: "Cormorant Garamond", "Playfair Display", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --shadow-elegant: 0 25px 60px -25px color-mix(in oklab, var(--royal) 35%, transparent);
+  --shadow-gold: 0 18px 40px -18px color-mix(in oklab, var(--gold) 55%, transparent);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand */
+  --royal: oklch(0.28 0.12 268);            /* #0A1F5B deep royal blue */
+  --royal-deep: oklch(0.18 0.10 268);
+  --gold: oklch(0.78 0.14 82);               /* #D4A017 golden yellow */
+  --gold-soft: oklch(0.92 0.08 88);
+
+  --background: oklch(0.99 0.005 90);        /* near white warm */
+  --foreground: oklch(0.18 0.04 265);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 265);
+
+  --primary: var(--royal);
+  --primary-foreground: oklch(0.99 0.005 90);
+  --secondary: oklch(0.97 0.01 90);
+  --secondary-foreground: var(--royal);
+  --muted: oklch(0.96 0.008 90);
+  --muted-foreground: oklch(0.45 0.03 265);
+  --accent: var(--gold);
+  --accent-foreground: var(--royal-deep);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.015 90);
+  --input: oklch(0.92 0.012 90);
+  --ring: var(--gold);
+}
+
+.dark {
+  --background: oklch(0.13 0.04 268);
+  --foreground: oklch(0.97 0.01 90);
+  --card: oklch(0.18 0.05 268);
+  --card-foreground: oklch(0.97 0.01 90);
+  --popover: oklch(0.18 0.05 268);
+  --popover-foreground: oklch(0.97 0.01 90);
+  --primary: var(--gold);
+  --primary-foreground: var(--royal-deep);
+  --secondary: oklch(0.22 0.06 268);
+  --secondary-foreground: oklch(0.97 0.01 90);
+  --muted: oklch(0.22 0.06 268);
+  --muted-foreground: oklch(0.75 0.02 90);
+  --accent: var(--gold);
+  --accent-foreground: var(--royal-deep);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--gold);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@utility container-page {
+  margin-inline: auto;
+  max-width: 1240px;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) { padding-inline: 2rem; }
+}
+
+@utility text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, oklch(0.88 0.12 88) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  background: var(--gold);
+  color: var(--royal-deep);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-gold);
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+  &:hover { transform: translateY(-2px); background: oklch(0.82 0.14 82); }
+}
+
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 9999px;
+  border: 1.5px solid color-mix(in oklab, var(--gold) 70%, transparent);
+  color: white;
+  font-weight: 600;
+  background: transparent;
+  transition: all .3s ease;
+  &:hover { background: var(--gold); color: var(--royal-deep); border-color: var(--gold); }
+}
+
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+  &::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+}
